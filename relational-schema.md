@@ -47,3 +47,6 @@ Foreløpig usikker på:
 - Skal sal være weak, blir samme "reuse of several primary key attrubutes" som vi hadde for medlemskap
 - Hvilken måte skal vi løse den "inheritance-distinct" greia nede ved de ulike saltypene? Dette er foreløpig bare en røff skisse
 - Den ternary-relasjonen har-sal må vi også kikke på, tror ikke den er helt good.
+
++ Prikk må kobles til gruppetime (kanskje?)
++ Oppgaven spesifiserer undergrupper av idrettslag
