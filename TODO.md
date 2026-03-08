@@ -2,3 +2,6 @@
 - [ ] Find all business requirements and model them with CHECK()
 - [ ] ON ______ CASCADE/DELETE
 
+
+Fjerne beskrivelse fasilitet
+Hvorfor har aktivitetstype id?
