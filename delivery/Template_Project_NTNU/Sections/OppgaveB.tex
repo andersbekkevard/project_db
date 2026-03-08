@@ -4,14 +4,14 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 
 \subsection*{Relasjonsskjema 2.0}
 
-\subsubsection*{bruker(*id*, navn, epost, mobilnr, utestengt\_til)}
+\subsubsection*{bruker(\underline{id}, navn, epost, mobilnr, utestengt\_til)}
 \textbf{BCNF:} Alle attributter er kun funksjonelt avhengige av primærnøkkelen id.
 
-\subsubsection*{medlem(*id*, starttid, gyldig\_til, bruker\_id)}
+\subsubsection*{medlem(\underline{id}, starttid, gyldig\_til, bruker\_id)}
 \textbf{Fremmednøkkel:} bruker\_id $\rightarrow$ bruker(id)\\
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{medlem\_av(*bruker\_id*, *idrettslag\_id*, starttid)}
+\subsubsection*{medlem\_av(\underline{bruker\_id}, \underline{idrettslag\_id}, starttid)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item bruker\_id $\rightarrow$ bruker(id)
@@ -19,14 +19,14 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Sammensatt primærnøkkel der starttid avhenger av hele nøkkelen.
 
-\subsubsection*{idrettslag(*id*, navn)}
+\subsubsection*{idrettslag(\underline{id}, navn)}
 \textbf{BCNF:} Alle attributter er funksjonelt avhengige av primærnøkkelen id.
 
-\subsubsection*{idrettslag\_gruppe(*gruppenavn*, idrettslag\_id)}
+\subsubsection*{idrettslag\_gruppe(\underline{gruppenavn}, idrettslag\_id)}
 \textbf{Fremmednøkkel:} idrettslag\_id $\rightarrow$ idrettslag(id)\\
 \textbf{BCNF:} idrettslag\_id er avhengig av gruppenavn. Refererer til forutsetningene beskrevet i deloppgave a.
 
-\subsubsection*{gruppereservasjon(*id*, uke\_nr, gruppenavn, tidsblokk\_starttid, tidsblokk\_ukedag, senter\_id, sal\_nr)}
+\subsubsection*{gruppereservasjon(\underline{id}, uke\_nr, gruppenavn, tidsblokk\_starttid, tidsblokk\_ukedag, senter\_id, sal\_nr)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item (gruppenavn, idrettslag\_id) $\rightarrow$ idrettslag\_gruppe(gruppenavn, idrettslag\_id)
@@ -35,10 +35,10 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{tidsblokk(*starttid*, *ukedag*)}
+\subsubsection*{tidsblokk(\underline{starttid}, \underline{ukedag})}
 \textbf{BCNF:} Sammensatt primærnøkkel, ingen andre attributter.
 
-\subsubsection*{gruppetime(*id*, uke\_nr, år, instruktør\_id, aktivitetstype, senter\_id, sal\_nr)}
+\subsubsection*{gruppetime(\underline{id}, uke\_nr, år, instruktør\_id, aktivitetstype, senter\_id, sal\_nr)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item instruktør\_id $\rightarrow$ instruktør(id)
@@ -47,7 +47,7 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{senterbesøk(*id*, ankomsttidspunkt, bruker\_id, senter\_id)}
+\subsubsection*{senterbesøk(\underline{id}, ankomsttidspunkt, bruker\_id, senter\_id)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item bruker\_id $\rightarrow$ bruker(id)
@@ -55,45 +55,45 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{senter(*id*, navn, gateadresse)}
+\subsubsection*{senter(\underline{id}, navn, gateadresse)}
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{senteråpningstid(*dato*, *senter\_id*, start\_tid, slutt\_tid)}
+\subsubsection*{senteråpningstid(\underline{dato}, \underline{senter\_id}, start\_tid, slutt\_tid)}
 \textbf{Fremmednøkkel:} senter\_id $\rightarrow$ senter(id)\\
 \textbf{BCNF:} Start\_tid og slutt\_tid avhenger kun av hele den sammensatte nøkkelen. Dette er den eneste funksjonelle avhengigheten vi har.
 
-\subsubsection*{senterbemanning(*dato*, *senter\_id*, start\_tid, slutt\_tid)}
+\subsubsection*{senterbemanning(\underline{dato}, \underline{senter\_id}, start\_tid, slutt\_tid)}
 \textbf{Fremmednøkkel:} senter\_id $\rightarrow$ senter(id)\\
 \textbf{BCNF:} Start\_tid og slutt\_tid avhenger kun av hele den sammensatte nøkkelen.
 
-\subsubsection*{fasilitet(*navn*, ikon)}
+\subsubsection*{fasilitet(\underline{navn}, ikon)}
 \textbf{BCNF:} Ikon avhenger kun av navn som er primærnøkkel.
 
-\subsubsection*{sal(*senter\_id*, *nr*, kapasitet)}
+\subsubsection*{sal(\underline{senter\_id}, \underline{nr}, kapasitet)}
 \textbf{Fremmednøkkel:} senter\_id $\rightarrow$ senter(id)\\
 \textbf{BCNF:} Kapasitet er avhengig av hele primærnøkkelen.
 
-\subsubsection*{spinningsal(*senter\_id*, *sal\_nr*)}
+\subsubsection*{spinningsal(\underline{senter\_id}, \underline{sal\_nr})}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ sal(senter\_id, nr)\\
 \textbf{BCNF:} Kun primærnøkkel, ingen andre attributter.
 
-\subsubsection*{løpesal(*senter\_id*, *sal\_nr*)}
+\subsubsection*{løpesal(\underline{senter\_id}, \underline{sal\_nr})}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ sal(senter\_id, nr)\\
 \textbf{BCNF:} Kun primærnøkkel, ingen andre attributter.
 
-\subsubsection*{flerbrukshall(*senter\_id*, *sal\_nr*, type)}
+\subsubsection*{flerbrukshall(\underline{senter\_id}, \underline{sal\_nr}, type)}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ sal(senter\_id, nr)\\
 \textbf{BCNF:} Type avhenger av både senter\_id og sal\_nr, derfor på BCNF.
 
-\subsubsection*{spinningsykkel(*id*, type, har\_bluetooth, senter\_id, sal\_nr)}
+\subsubsection*{spinningsykkel(\underline{id}, type, har\_bluetooth, senter\_id, sal\_nr)}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ spinningsal(senter\_id, sal\_nr)\\
 \textbf{BCNF:} Alle attributter er kun avhengige av id.
 
-\subsubsection*{tredemølle(*id*, produsent, maks\_hastighet, maks\_stigning, senter\_id, sal\_nr) –CHECK((senter\_id, sal\_nr in løpesal)}
+\subsubsection*{tredemølle(\underline{id}, produsent, maks\_hastighet, maks\_stigning, senter\_id, sal\_nr) –CHECK((senter\_id, sal\_nr in løpesal)}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ løpesal(senter\_id, sal\_nr)\\
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
-\subsubsection*{time\_skjer\_i(*gruppetime\_id*, tidsblokk\_starttid, tidsblokk\_ukedag)}
+\subsubsection*{time\_skjer\_i(\underline{gruppetime\_id}, tidsblokk\_starttid, tidsblokk\_ukedag)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item gruppetime\_id $\rightarrow$ gruppetime(id)
@@ -101,7 +101,7 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Alle attributter avhenger kun av gruppetime\_id.
 
-\subsubsection*{deltar\_på\_time(*gruppetime\_id*, *bruker\_id*, påmeldt\_tidspunkt, avmeldt\_tidspunkt, prikk\_dato)}
+\subsubsection*{deltar\_på\_time(\underline{gruppetime\_id}, \underline{bruker\_id}, påmeldt\_tidspunkt, avmeldt\_tidspunkt, prikk\_dato)}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item gruppetime\_id $\rightarrow$ gruppetime(id)
@@ -109,7 +109,7 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Sammensatt nøkkel utgjør venstresiden av alle funksjonelle avhengigheter.
 
-\subsubsection*{fasiliterer(*senter\_id*, *fasilitetsnavn*)}
+\subsubsection*{fasiliterer(\underline{senter\_id}, \underline{fasilitetsnavn})}
 \textbf{Fremmednøkler:}
 \begin{itemize}
     \item senter\_id $\rightarrow$ senter(id)
@@ -117,9 +117,9 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \end{itemize}
 \textbf{BCNF:} Kun sammensatt primærnøkkel, ingen andre attributter.
 
-\subsubsection*{instruktør(*id*, fornavn)}
+\subsubsection*{instruktør(\underline{id}, fornavn)}
 \textbf{BCNF:} Fornavn avhenger av id.
 
-\subsubsection*{aktivitetstype(*navn*, beskrivelse)}
+\subsubsection*{aktivitetstype(\underline{navn}, beskrivelse)}
 \textbf{BCNF:} Beskrivelse avhenger kun av navnet som er primærnøkkel.
 
