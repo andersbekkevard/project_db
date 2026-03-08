@@ -1,29 +1,4 @@
 PRAGMA foreign_keys = ON;
-DROP TABLE IF EXISTS bruker;
-DROP TABLE IF EXISTS idrettslag;
-DROP TABLE IF EXISTS medlem;
-DROP TABLE IF EXISTS medlem_av;
-DROP TABLE IF EXISTS idrettslag_gruppe;
-DROP TABLE IF EXISTS tidsblokk;
-DROP TABLE IF EXISTS senter;
-DROP TABLE IF EXISTS sal;
-DROP TABLE IF EXISTS spinningsal;
-DROP TABLE IF EXISTS løpesal;
-DROP TABLE IF EXISTS flerbrukshall;
-DROP TABLE IF EXISTS fasilitet;
-DROP TABLE IF EXISTS fasiliterer;
-DROP TABLE IF EXISTS instruktør;
-DROP TABLE IF EXISTS aktivitetstype;
-DROP TABLE IF EXISTS gruppereservasjon;
-DROP TABLE IF EXISTS gruppetime;
-DROP TABLE IF EXISTS senterbesøk;
-DROP TABLE IF EXISTS senteråpningstid;
-DROP TABLE IF EXISTS senterbemanning;
-DROP TABLE IF EXISTS spinningsykkel;
-DROP TABLE IF EXISTS tredemølle;
-DROP TABLE IF EXISTS time_skjer_i;
-DROP TABLE IF EXISTS deltar_på_time;
-
 CREATE TABLE IF NOT EXISTS bruker (
     id INTEGER PRIMARY KEY,
     navn TEXT NOT NULL,
