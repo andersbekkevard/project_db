@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net" modified="2026-03-08T10:07:00Z" agent="OpenClaw" version="28.2.5" type="device">
+  <diagram id="demo-er" name="ER Demo">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0" background="none" defaultFontFamily="Noto Sans JP">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="SiT Training ER Demo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontFamily=Noto Sans JP;" vertex="1" parent="1">
+          <mxGeometry x="500" y="30" width="300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="center" value="&lt;b&gt;TRAINING_CENTER&lt;/b&gt;&lt;br&gt;PK center_id&lt;br&gt;name&lt;br&gt;street_address" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontFamily=Noto Sans JP;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="180" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="room" value="&lt;b&gt;ROOM&lt;/b&gt;&lt;br&gt;PK room_id&lt;br&gt;FK center_id&lt;br&gt;room_name&lt;br&gt;capacity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontFamily=Noto Sans JP;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="180" width="240" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="groupclass" value="&lt;b&gt;GROUP_CLASS&lt;/b&gt;&lt;br&gt;PK session_id&lt;br&gt;FK room_id&lt;br&gt;FK activity_type_id&lt;br&gt;starts_at&lt;br&gt;ends_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;fontFamily=Noto Sans JP;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="860" y="170" width="260" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="booking" value="&lt;b&gt;BOOKING&lt;/b&gt;&lt;br&gt;PK/FK user_id&lt;br&gt;PK/FK session_id&lt;br&gt;booking_status&lt;br&gt;waitlist_position" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;fontFamily=Noto Sans JP;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="860" y="430" width="260" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="user" value="&lt;b&gt;APP_USER&lt;/b&gt;&lt;br&gt;PK user_id&lt;br&gt;email&lt;br&gt;mobile" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontFamily=Noto Sans JP;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="430" width="240" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value="contains (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=14;fontFamily=Noto Sans JP;" edge="1" parent="1" source="center" target="room">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="250" as="targetPoint"/>
+            <mxPoint x="0" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e2" value="hosts (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=14;fontFamily=Noto Sans JP;" edge="1" parent="1" source="room" target="groupclass">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="250" as="targetPoint"/>
+            <mxPoint x="0" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e3" value="makes (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=14;fontFamily=Noto Sans JP;" edge="1" parent="1" source="user" target="booking">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="485" as="targetPoint"/>
+            <mxPoint x="0" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e4" value="receives (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=14;fontFamily=Noto Sans JP;" edge="1" parent="1" source="groupclass" target="booking">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="390" as="targetPoint"/>
+            <mxPoint x="30" y="0" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
