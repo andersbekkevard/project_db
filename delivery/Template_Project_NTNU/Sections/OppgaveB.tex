@@ -89,7 +89,7 @@ I denne delen presenterer vi ER-modellen oversatt til relasjonsdatabaseskjema. F
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ spinningsal(senter\_id, sal\_nr)\\
 \textbf{BCNF:} Alle attributter er kun avhengige av id.
 
-\subsubsection*{tredemølle(\underline{id}, produsent, maks\_hastighet, maks\_stigning, senter\_id, sal\_nr) –CHECK((senter\_id, sal\_nr in løpesal)}
+\subsubsection*{tredemølle(\underline{id}, produsent, maks\_hastighet, maks\_stigning, senter\_id, sal\_nr)}
 \textbf{Fremmednøkkel:} (senter\_id, sal\_nr) $\rightarrow$ løpesal(senter\_id, sal\_nr)\\
 \textbf{BCNF:} Alle attributter avhenger kun av id.
 
