@@ -6,7 +6,7 @@
 
 \textbf{2.} Det samme spørsmålet for en bruker. Kan dette løses i modellen eller må det gjøres i programvaren?
 
-\textbf{Svar:}
+\textbf{Svar på spørsmål 1 og 2:}
 
 Vi tar i bruk samme løsning for både problemstilling én og to. Vi mener at det er mulig, men ikke optimalt å løse dette ved direkte implementasjon i ER-diagrammet. Vi ønsker likevel å forklare hvordan vi kan løse problemet.
 
@@ -18,9 +18,9 @@ Et annet, og desto mer overveiende problem, er at vi vurderer informasjonen lagr
 
 \subsection*{Spørsmål 3}
 
-\textbf{Fra hvilket usecase testes det for / opprettes utestengelse (svartelisting)? Det trenger ikke være en av de oppgitte usecasene.}
+\textbf{3.} Fra hvilket usecase testes det for / opprettes utestengelse (svartelisting)? Det trenger ikke være en av de oppgitte usecasene.
 
-\textbf{Svar:}
+\textbf{Svar på spørsmål 3:}
 
 Svartelisting opprettes naturlig i usecase 3, da det er her det registreres oppmøte. Systemet setter prikk\_dato på en deltaker som ikke møtte opp. Etter at prikken er registrert, bør da systemet automatisk sjekke om brukeren nå har 3 eller flere prikker innen de siste 30 dagene. Hvis brukeren tilfredsstiller kravet til utestengelse, bør man sette utestengt\_til = NOW() + 30 dager på brukeren.
 
@@ -28,9 +28,9 @@ Usecase 6 er selve implementasjonen av svartelistings-logikken, men det er useca
 
 \subsection*{Spørsmål 4}
 
-\textbf{Statistikk er det noe som må lagres eksplisitt eller går det an å bare gjøre queries for å få svar? Diskuter dette.}
+\textbf{4.} Statistikk er det noe som må lagres eksplisitt eller går det an å bare gjøre queries for å få svar? Diskuter dette.
 
-\textbf{Svar:}
+\textbf{Svar på spørsmål 4:}
 
 Statistikk er noe vi mener ikke må lagres eksplisitt, da det er derived data. I de fleste tilfeller holder det med queries. Ønsker man for eksempel å finne hvem som trener mest, kan man bruke count gruppert på bruker.
 
