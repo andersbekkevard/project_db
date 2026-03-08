@@ -14,7 +14,7 @@ Man kan opprette to nye entiteter, “instruktør\_tid” og “bruker\_tid”. 
 
 Det er flere grunner til at vi likevel ikke velger å løse oppgaven på denne måten. Ett problem som dukker opp med denne implementasjonen er at gruppetimer kun kan kobles til én instruktør-tid. Dette medfører at alle gruppetimer må ha lik lengde, siden vi antar at alle tidsintervall er av lik lengde.
 
-Et annet, og desto mer overveiende problem, er at vi vurderer informasjonen lagret i disse to nye entitetene som overflødig informasjon. Før man kobler en instruktør eller bruker til en gruppetime kan man enkelt sjekke om det finnes en annen gruppetime der den brukeren eller instruktøren allerede er meldt på i det gitte tidsintervallet. Dette kan blant annet implementeres ved hjelp av en “integrity constraint”, der man før innsetting sjekker “gruppetime”-tabellen for å se om det finnes en annen gruppetime med samsvarende instruktør og tidsintervall.
+Et annet, og desto mer overveiende problem, er at vi vurderer informasjonen lagret i disse to nye entitetene som overflødig informasjon. Før man kobler en instruktør eller bruker til en gruppetime kan man enkelt sjekke om det finnes en annen gruppetime der den brukeren eller instruktøren allerede er meldt på i det gitte tidsintervallet. Dette kan blant annet implementeres ved hjelp av en “integritetsrestriksjon”, der man før innsetting sjekker “gruppetime”-tabellen for å se om det finnes en annen gruppetime med samsvarende instruktør og tidsintervall.
 
 \subsection*{Spørsmål 3}
 
