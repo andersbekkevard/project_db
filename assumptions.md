@@ -13,3 +13,7 @@ Timeslots endres også ikke særlig hyppig, slik at de kan være definert i inse
 
 ### Prikksystem
 Når tre prikk: eksisterende bookinger blir værende.
+
+
+Legg til:
+- [ ] Klarifisering for alle "id" og "nr": I hvilket skop er de unike.
