@@ -3,6 +3,4 @@
 - [ ] ON ______ CASCADE/DELETE
 
 
-Fjerne beskrivelse fasilitet
-Hvorfor har aktivitetstype id?
 Overgang mellom de ulike tids-modalitetene

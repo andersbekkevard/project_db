@@ -5,7 +5,7 @@ instruktør(*id*, fornavn)
 
 idrettslag(*id*)
 
-tidsrom(*id*, starttidspunkt, sluttidspunkt)
+reservasjonstid(*id*, starttidspunkt, sluttidspunkt, ukedag)
 
 senter(*id*, navn, gateadresse, åpner, stenger, bemann_start, bemann_slutt)
 

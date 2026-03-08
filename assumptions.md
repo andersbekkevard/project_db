@@ -17,3 +17,10 @@ Når tre prikk: eksisterende bookinger blir værende.
 
 Legg til:
 - [ ] Klarifisering for alle "id" og "nr": I hvilket skop er de unike.
+
+
+Gjør det tydelig at tidsblokk er 1h.
+PYTHON: Enforcer at en gruppetimes tidsblokker må være sammenhengende 
+
+
+Senterbesøk. Vi enforcer ikke unikt tidspunkt og senter og bruker, men har kun ID som primary key slik at vi kan detektere ulovlig innpass.
