@@ -1,25 +1,37 @@
-\section{d) Svar på spørsmål}
+\section{Svar på spørsmål}
 
-d) Vi ønsker svar på følgende spørsmål:
+\subsection*{Spørsmål 1 og 2}
 
-\begin{enumerate}
-  \item Hvordan (eller kan) dere sørge for at en instruktør ikke kan være til stede på to forskjellige plasser samtidig? Kan dere få til dette ved hjelp av modellen deres, eller må noe slikt implementeres i programvaren.
-  \item Det samme spørsmålet for en bruker. Kan dette løses i modellen eller må det gjøres i programvaren?
-\end{enumerate}
-\paragraph{svar}
-Vi tar i bruk samme løsning for både problemstilling én og to. Vi mener at det er mulig, men ikke optimalt å løse dette ved direkte implementasjon i ER-diagrammet. Vi ønsker likevel å forklare hvordan vi kan løse problemet. Man kan opprette to nye entiteter, “instruktør\_tid” og “bruker\_tid”. Disse entitetene kan bestå av instruktør/bruker-id, og en reservasjonstid-id. Videre kan man legge inn en én til én relasjon mellom “gruppetime” og “instruktør\_tid”. Dette vil sørge for at for hvert tidsintervall så vil én instruktør aldri bli koblet til to gruppetimer. Ekvivalent kan vi legge til en én til én relasjon mellom “gruppetime” og “bruker\_tid”, med identisk funksjonalitet og implementasjon som beskrevet. Det er flere grunner til at vi likevel ikke velger å løse oppgaven på denne måten. Ett problem som dukker opp med denne implementasjonen er at gruppetimer kun kan kobles til én instruktør-tid. Dette medfører at alle gruppetimer må ha lik lengde, siden vi antar at alle tidsintervall er av lik lengde. Et annet, og desto mer overveiende problem, er at vi vurderer informasjonen lagret i disse to nye entitetene som overflødig informasjon. Før man kobler en instruktør eller bruker til en gruppetime kan man enkelt sjekke om det finnes en annen gruppetime der den brukeren eller instruktøren allerede er meldt på i det gitte tidsintervallet. Dette kan blant annet implementeres ved hjelp av en “integrity constraint”, der man før innsetting sjekker “gruppetime”-tabellen for å se om det finnes en annen gruppetime med samsvarende instruktør og tidsintervall.
+\textbf{1.} Hvordan (eller kan) dere sørge for at en instruktør ikke kan være til stede på to forskjellige plasser samtidig? Kan dere få til dette ved hjelp av modellen deres, eller må noe slikt implementeres i programvaren?
 
-\begin{enumerate}
-  \item Fra hvilket usecase testes det for / opprettes utestengelse (svartelisting) ? Det trenger ikke være en av de oppgitte usecasene.
-\end{enumerate}
+\textbf{2.} Det samme spørsmålet for en bruker. Kan dette løses i modellen eller må det gjøres i programvaren?
+
+\textbf{Svar:}
+
+Vi tar i bruk samme løsning for både problemstilling én og to. Vi mener at det er mulig, men ikke optimalt å løse dette ved direkte implementasjon i ER-diagrammet. Vi ønsker likevel å forklare hvordan vi kan løse problemet.
+
+Man kan opprette to nye entiteter, “instruktør\_tid” og “bruker\_tid”. Disse entitetene kan bestå av instruktør/bruker-id, og en reservasjonstid-id. Videre kan man legge inn en én til én relasjon mellom “gruppetime” og “instruktør\_tid”. Dette vil sørge for at for hvert tidsintervall så vil én instruktør aldri bli koblet til to gruppetimer. Ekvivalent kan vi legge til en én til én relasjon mellom “gruppetime” og “bruker\_tid”, med identisk funksjonalitet og implementasjon som beskrevet.
+
+Det er flere grunner til at vi likevel ikke velger å løse oppgaven på denne måten. Ett problem som dukker opp med denne implementasjonen er at gruppetimer kun kan kobles til én instruktør-tid. Dette medfører at alle gruppetimer må ha lik lengde, siden vi antar at alle tidsintervall er av lik lengde.
+
+Et annet, og desto mer overveiende problem, er at vi vurderer informasjonen lagret i disse to nye entitetene som overflødig informasjon. Før man kobler en instruktør eller bruker til en gruppetime kan man enkelt sjekke om det finnes en annen gruppetime der den brukeren eller instruktøren allerede er meldt på i det gitte tidsintervallet. Dette kan blant annet implementeres ved hjelp av en “integrity constraint”, der man før innsetting sjekker “gruppetime”-tabellen for å se om det finnes en annen gruppetime med samsvarende instruktør og tidsintervall.
+
+\subsection*{Spørsmål 3}
+
+\textbf{Fra hvilket usecase testes det for / opprettes utestengelse (svartelisting)? Det trenger ikke være en av de oppgitte usecasene.}
+
+\textbf{Svar:}
+
 Svartelisting opprettes naturlig i usecase 3, da det er her det registreres oppmøte. Systemet setter prikk\_dato på en deltaker som ikke møtte opp. Etter at prikken er registrert, bør da systemet automatisk sjekke om brukeren nå har 3 eller flere prikker innen de siste 30 dagene. Hvis brukeren tilfredsstiller kravet til utestengelse, bør man sette utestengt\_til = NOW() + 30 dager på brukeren.
 
 Usecase 6 er selve implementasjonen av svartelistings-logikken, men det er usecase 3 som kaller denne logikken ved å registrere prikk etter manglende oppmøte. Dette kan implementeres ved bruk av en trigger.
 
-\begin{enumerate}
-  \item Statistikk er det noe som må lagres eksplisitt eller går det an å bare gjøre queries for å få svar? Diskuter dette.
-\end{enumerate}
+\subsection*{Spørsmål 4}
+
+\textbf{Statistikk er det noe som må lagres eksplisitt eller går det an å bare gjøre queries for å få svar? Diskuter dette.}
+
+\textbf{Svar:}
+
 Statistikk er noe vi mener ikke må lagres eksplisitt, da det er derived data. I de fleste tilfeller holder det med queries. Ønsker man for eksempel å finne hvem som trener mest, kan man bruke count gruppert på bruker.
 
 Vi ønsker likevel å trekke fram to tilfeller der det kan være lurt med eksplisitt lagring. For det første, hvis systemet skal håndtere større datamengder over tid, kan det lønne seg å lagre aggregert statistikk i egne tabeller fremfor å beregne nytt hver gang. For det andre nevner oppgaven eksplisitt at SiT ønsker statistikk for å planlegge for nye semestre. Det motiverer for å lagre statistikk eksplisitt, hvis man ønsker bedre historiske sammenligningsgrunnlag, La oss si at SiT ønsker å bygge om på saler. Man trenger da historikk over tid, og da kan historiske queries gi feil oppfyllingsgrad for tidligere økter. Det er fordi om kapasiteten til salen endres, vil kapasiteten på tidspunktet for økten gå tapt.
-
