@@ -1,26 +1,29 @@
-### Timeslots og lag
-Brukere skal ikke "booke" seg inn på en lagtime. Laget har booket timen, også sjekkes det eksternt at alle lagmedlemmer som møter opp på disse lagtimene også er SiT-medlem
+TASK:
+En ER-modell som viser deres fullstendige datamodell. Dere står fritt til å bruke alle ERog EER-konsepter som er gjennomgått i emnet. Dokumenter de forutsetningene dere har gjort og eventuelle restriksjonene som ikke (kan) uttrykkes gjennom ER-modellen.
 
 
-### Instruktører og bruker
-En instruktør-bruker kan ikke melde seg på timer. Kommunikasjon med instruktører går via et eksternt system. Dersom en instruktør vil trene må den lage en brukerkonto og melde seg på som bruker. Dette er for å fasilitere for at instruktører kan holde timer uten å nødvendigvis være med i SiT
+Forutsetninger: 
+Feltet deltar_på_time.prikk_dato settes av instruktør/ansvarlig for timen. Dette kan i praksis gjøres ved at man scanner seg inn i timen. Grunnen til at vi har løst det slik, er at det gir fleksibilitet for når en prikk skal settes. Blant annet kan man ha møtt opp fem minutter før timen, men ikke rukket å scanne seg inn grunnet kø.
+Når en bruker deltar på en gruppereservasjon, har man fasilitert for at man kan sjekke om brukeren er en del av idrettslaget. Vi ser derimot ikke nødvendigheten av at man skal ha egen påmeldings-logikk for påmelding av brukere for hver enkelt gruppereservasjon.
+En instruktør-bruker kan ikke melde seg på timer. Kommunikasjon med instruktører går via et eksternt system. Dersom en instruktør vil trene, må den lage en brukerkonto og melde seg på som bruker. Dette er for å fasilitere for at instruktører kan holde timer uten å nødvendigvis være med i SiT
+Dersom man får tre prikker og blir utestengt, så avlyses alle fremtidige bookinger ved at man fjerner brukeren fra deltar_på_time tabellen.
+Det er 168 (24 * 7) ulike tidsblokker; hver tidsblokk starter kl.xx:00, og varer nøyaktig én time.
+Dersom en gruppe ønsker å booke en hall i flere timer, vil dette gjøres gjennom flere bookinger. 
+Idrettslaggrupper sine navn er entydig definert. For eksempel vil NTNUI sitt 2. lag i fotball hete noe slikt som “NTNUI 2.lag fotball”, og ikke noe generisk som “fotballlag”.
+Vi tillater to ulike senterbesøk gjort av samme bruker, på samme senter, til samme tid. Dette er siden vi kan bruke disse “duplikatene” til å detektere mistenkelig oppførsel av brukere.
+“gruppereservasjon” og “gruppetime”- tabellene resettes hvert år. Da kan denne dataen eksempelvis arkiveres et annet sted, slik at tabellene ikke blir for store. 
+Regler for prikk, for sen avmelding og uteblivelse må håndteres i
+applikasjonen. Schemaet lagrer bare resultatet (prikk_dato), ikke logikken.
 
-
-### Timeslot og åpningstid
-Det må løses manuelt at timeslots/timer ikke kan være utenfor senterets åpningstid.
-Timeslots endres også ikke særlig hyppig, slik at de kan være definert i insert statements så de ikke overlapper.
-
-
-### Prikksystem
-Når tre prikk: eksisterende bookinger blir værende.
-
-
-Legg til:
-- [ ] Klarifisering for alle "id" og "nr": I hvilket skop er de unike.
-
-
-Gjør det tydelig at tidsblokk er 1h.
-PYTHON: Enforcer at en gruppetimes tidsblokker må være sammenhengende 
-
-
-Senterbesøk. Vi enforcer ikke unikt tidspunkt og senter og bruker, men har kun ID som primary key slik at vi kan detektere ulovlig innpass.
+Restriksjoner som ikke uttrykkes gjennom EER-modellen: 
+Et senter kan kun være bemannet dersom det også er åpent.
+En bruker, og en instruktør kan begge kun være med på én gruppetime per timeslot. Dette beskrives i detalj i d.
+En bruker skal bare kunne meldes på gruppetimer dersom brukeren ikke er utestengt.
+Overlapp må kontrolleres i applikasjonen:
+samme sal kan ikke ha både gruppetime og gruppereservasjon i samme
+relevante tidsrom
+en instruktør kan ikke ha flere gruppetimer samtidig
+en bruker bør ikke kunne være påmeldt flere gruppetimer som skjer samtidig
+Senterbesøk, gruppetimer og gruppereservasjoner bør bare opprettes innenfor
+senterets åpningstid og eventuelle bemanningskrav. Dette må valideres i
+applikasjonen.
