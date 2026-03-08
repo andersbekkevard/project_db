@@ -3,8 +3,25 @@
 I denne delen presenterer vi ER-modellen for systemet, samt forutsetningene vi har lagt til grunn og restriksjoner som ikke kan uttrykkes fullt ut i ER-/EER-modellen.
 
 \subsection*{Forutsetninger}
-Feltet deltar\_på\_time.prikk\_dato settes av instruktør/ansvarlig for timen. Dette kan i praksis gjøres ved at man scanner seg inn i timen. Grunnen til at vi har løst det slik, er at det gir fleksibilitet for når en prikk skal settes. Blant annet kan man ha møtt opp fem minutter før timen, men ikke rukket å scanne seg inn grunnet kø. Når en bruker deltar på en gruppereservasjon, har man fasilitert for at man kan sjekke om brukeren er en del av idrettslaget. Vi ser derimot ikke nødvendigheten av at man skal ha egen påmeldings-logikk for påmelding av brukere for hver enkelt gruppereservasjon. En instruktør-bruker kan ikke melde seg på timer. Kommunikasjon med instruktører går via et eksternt system. Dersom en instruktør vil trene, må den lage en brukerkonto og melde seg på som bruker. Dette er for å fasilitere for at instruktører kan holde timer uten å nødvendigvis være med i SiT Dersom man får tre prikker og blir utestengt, så avlyses alle fremtidige bookinger ved at man fjerner brukeren fra deltar\_på\_time tabellen. Det er 168 (24 * 7) ulike tidsblokker; hver tidsblokk starter kl.xx:00, og varer nøyaktig én time. Dersom en gruppe ønsker å booke en hall i flere timer, vil dette gjøres gjennom flere bookinger. Idrettslaggrupper sine navn er entydig definert. For eksempel vil NTNUI sitt 2. lag i fotball hete noe slikt som “NTNUI 2.lag fotball”, og ikke noe generisk som “fotballlag”. Vi tillater to ulike senterbesøk gjort av samme bruker, på samme senter, til samme tid. Dette er siden vi kan bruke disse “duplikatene” til å detektere mistenkelig oppførsel av brukere. Eksempelvis at man scanner inn en annen person uten medlemskap. “gruppereservasjon” og “gruppetime”- tabellene resettes hvert år. Da kan denne dataen eksempelvis arkiveres et annet sted, slik at tabellene ikke blir for store. Regler for prikk, for sen avmelding og uteblivelse må håndteres i applikasjonen. Schemaet lagrer bare resultatet (prikk\_dato), ikke logikken.
+\begin{itemize}
+    \item Feltet deltar\_på\_time.prikk\_dato settes av instruktør/ansvarlig for timen. Dette kan i praksis gjøres ved at man scanner seg inn i timen. Grunnen til at vi har løst det slik, er at det gir fleksibilitet for når en prikk skal settes. Blant annet kan man ha møtt opp fem minutter før timen, men ikke rukket å scanne seg inn grunnet kø.
+    \item Når en bruker deltar på en gruppereservasjon, har man fasilitert for at man kan sjekke om brukeren er en del av idrettslaget. Vi ser derimot ikke nødvendigheten av at man skal ha egen påmeldings-logikk for påmelding av brukere for hver enkelt gruppereservasjon.
+    \item En instruktør-bruker kan ikke melde seg på timer. Kommunikasjon med instruktører går via et eksternt system. Dersom en instruktør vil trene, må den lage en brukerkonto og melde seg på som bruker. Dette er for å fasilitere for at instruktører kan holde timer uten å nødvendigvis være med i SiT
+    \item Dersom man får tre prikker og blir utestengt, så avlyses alle fremtidige bookinger ved at man fjerner brukeren fra deltar\_på\_time tabellen.
+    \item Det er 168 (24 * 7) ulike tidsblokker; hver tidsblokk starter kl.xx:00, og varer nøyaktig én time.
+    \item Dersom en gruppe ønsker å booke en hall i flere timer, vil dette gjøres gjennom flere bookinger.
+    \item Idrettslaggrupper sine navn er entydig definert. For eksempel vil NTNUI sitt 2. lag i fotball hete noe slikt som “NTNUI 2.lag fotball”, og ikke noe generisk som “fotballlag”.
+    \item Vi tillater to ulike senterbesøk gjort av samme bruker, på samme senter, til samme tid. Dette er siden vi kan bruke disse “duplikatene” til å detektere mistenkelig oppførsel av brukere. Eksempelvis at man scanner inn en annen person uten medlemskap.
+    \item “gruppereservasjon” og “gruppetime”- tabellene resettes hvert år. Da kan denne dataen eksempelvis arkiveres et annet sted, slik at tabellene ikke blir for store.
+    \item Regler for prikk, for sen avmelding og uteblivelse må håndteres i applikasjonen. Schemaet lagrer bare resultatet (prikk\_dato), ikke logikken.
+\end{itemize}
 
 \subsection*{Restriksjoner som ikke uttrykkes gjennom EER-modellen}
-Et senter kan kun være bemannet dersom det også er åpent. En bruker, og en instruktør kan begge kun være med på én gruppetime per timeslot. Dette beskrives i detalj i oppgave d. En bruker skal bare kunne meldes på gruppetimer dersom brukeren ikke er utestengt. Overlapp må kontrolleres i applikasjonen; samme sal kan ikke ha både gruppetime og gruppereservasjon i samme relevante tidsrom Senterbesøk, gruppetimer og gruppereservasjoner bør bare opprettes innenfor senterets åpningstid og eventuelle bemanningskrav. Dette må valideres i applikasjonen.
+\begin{itemize}
+    \item Et senter kan kun være bemannet dersom det også er åpent.
+    \item En bruker, og en instruktør kan begge kun være med på én gruppetime per timeslot. Dette beskrives i detalj i oppgave d.
+    \item En bruker skal bare kunne meldes på gruppetimer dersom brukeren ikke er utestengt.
+    \item Overlapp må kontrolleres i applikasjonen; samme sal kan ikke ha både gruppetime og gruppereservasjon i samme relevante tidsrom
+    \item Senterbesøk, gruppetimer og gruppereservasjoner bør bare opprettes innenfor senterets åpningstid og eventuelle bemanningskrav. Dette må valideres i applikasjonen.
+\end{itemize}
 
