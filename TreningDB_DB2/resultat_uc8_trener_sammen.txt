@@ -1,0 +1,7 @@
+epost_1 | epost_2 | antall_felles_treninger
+kari@stud.ntnu.no | ola@stud.ntnu.no | 3
+johnny@stud.ntnu.no | kari@stud.ntnu.no | 2
+johnny@stud.ntnu.no | ola@stud.ntnu.no | 2
+kari@stud.ntnu.no | emma@stud.ntnu.no | 2
+ola@stud.ntnu.no | emma@stud.ntnu.no | 2
+johnny@stud.ntnu.no | emma@stud.ntnu.no | 1

@@ -1,0 +1,3 @@
+trening | treningssenter | dato_tid
+Spin60 | Øya | 2026-03-17 18:30:00
+Spin45 | Øya | 2026-03-18 17:30:00

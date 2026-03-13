@@ -1,0 +1,7 @@
+Ukeplan for uke 12 fra 2026-03-16:
+2026-03-16 17:30:00 | 2026-03-16 18:15:00 | Øya | Sal 1 | Spin45 | Instruktør Siri
+2026-03-16 19:30:00 | 2026-03-16 20:30:00 | Dragvoll | Sal 1 | Spin60 | Instruktør Ada
+2026-03-17 07:30:00 | 2026-03-17 08:15:00 | Dragvoll | Sal 1 | Spin45 | Instruktør Ada
+2026-03-17 18:30:00 | 2026-03-17 19:30:00 | Øya | Sal 1 | Spin60 | Instruktør Siri
+2026-03-18 17:30:00 | 2026-03-18 18:15:00 | Øya | Sal 1 | Spin45 | Instruktør Siri
+2026-03-18 19:30:00 | 2026-03-18 20:30:00 | Dragvoll | Sal 1 | Spinning Intervall | Instruktør Ada

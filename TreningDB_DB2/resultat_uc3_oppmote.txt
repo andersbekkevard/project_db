@@ -1,0 +1,9 @@
+Oppmote registrert.
+Kode: UC3_OPPMOTE_REGISTRERT
+Epost: johnny@stud.ntnu.no
+Aktivitet: Spin60
+Tidspunkt: 2026-03-17 18:30:00
+Bruker-id: 1
+Gruppetime-id: 4
+Endrede rader: 1
+Verifiserte rader: 1

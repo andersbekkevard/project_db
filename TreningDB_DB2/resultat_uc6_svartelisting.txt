@@ -1,0 +1,8 @@
+Svartelisting registrert.
+Kode: UC6_SVARTELISTET
+Epost: johnny@stud.ntnu.no
+Bruker-id: 1
+Prikker siste 30 dager: 3
+Utestengt til: 2026-04-16 00:00:00
+Endrede rader: 1
+Verifiserte rader: 1
